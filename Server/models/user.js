@@ -7,8 +7,8 @@ const User = sequelize.define('User', {
   email: { type: DataTypes.STRING(100), unique: true, allowNull: false },
   password: { type: DataTypes.STRING(255), allowNull: false },
   role: { type: DataTypes.ENUM('admin', 'client', 'staff'), allowNull: false },
-  contact_number: DataTypes.STRING(15),
-  aadhar_pan_no: DataTypes.STRING(20),
+  contact_number: { type: DataTypes.STRING(10), allowNull: false, unique: true },
+  aadhar_no: { type: DataTypes.STRING(12), allowNull: false, unique: true },
   created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
   updated_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
 });

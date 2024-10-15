@@ -1,6 +1,18 @@
+# Node modules
 node_modules/
-.expo/
+
+# Distribution folder
 dist/
+
+# Expo files (if using Expo for app development)
+.expo/
+web-build/
+
+# Environment variables
+.env
+.env.local
+
+# Build files
 npm-debug.*
 *.jks
 *.p8
@@ -8,7 +20,6 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
-web-build/
 
-.env 
-.env.local
+# Logs and temporary files
+*.log

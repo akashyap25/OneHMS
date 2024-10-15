@@ -6,11 +6,13 @@ const { generateToken } = require('../utils/jwt');
 // Register a new user
 exports.register = async (req, res) => {
   const errors = validationResult(req);
+  console.log(errors);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { fname, lname, email, password, role } = req.body;
+  const { fname, lname, email, password, contact_number,aadhar_no } = req.body;
+  const role = 'client';
 
   try {
     let user = await User.findOne({ where: { email } });
@@ -23,7 +25,7 @@ exports.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create user
-    user = await User.create({ fname, lname, email, password: hashedPassword, role });
+    user = await User.create({ fname, lname, email, password: hashedPassword, role,contact_number,aadhar_no });
 
     // Generate token
     const token = generateToken(user);

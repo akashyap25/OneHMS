@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const sequelize = require('./config/db');
 const db = require('./models');
 const authRoutes = require('./routes/auth');
@@ -6,6 +7,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.use('/api/auth', authRoutes);
 
@@ -15,7 +17,7 @@ sequelize.authenticate()
     console.log('Database connected...');
 
     // Sync all models with the database
-    return sequelize.sync({ alter: true });  // Use { alter: true } to make small changes to the database schema without dropping tables
+    return sequelize.sync({alter: true});  // Use { alter: true } to make small changes to the database schema without dropping tables
   })
   .then(() => {
     console.log('Models synchronized successfully');
